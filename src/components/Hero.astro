@@ -1,0 +1,307 @@
+---
+import GeometricBackground from "./GeometricBackground.astro";
+---
+
+<section class="hero">
+    <GeometricBackground />
+    <div class="content">
+        <div class="hero-text">
+            <div class="logo">
+                <span class="logo-text">Obyz</span>
+                <span class="logo-accent">Tech</span>
+            </div>
+            <h1 class="title-container">
+                <span class="title-line">Professional Websites</span>
+                <span class="gradient-text">Made Affordable</span>
+            </h1>
+            <p class="subtitle">
+                We offer high-quality, affordable websites for small businesses
+                that always start with a <span class="highlight">FREE</span> demo.
+            </p>
+            <div class="price-container">
+                <div class="price-tag">
+                    <span class="price-label">Starting at</span>
+                    <span class="price-amount">$500</span>
+                </div>
+            </div>
+            <div class="cta-buttons">
+                <a href="#pricing" class="primary-button">
+                    <span class="button-text">Get Started</span>
+                    <span class="button-shine"></span>
+                </a>
+                <a href="#portfolio" class="secondary-button">
+                    <span class="button-text">View our work</span>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    .hero {
+        position: relative;
+        min-height: 100vh;
+        overflow: hidden;
+    }
+
+    .content {
+        position: relative;
+        z-index: 10;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        padding: 2rem;
+    }
+
+    .hero-text {
+        text-align: center;
+        max-width: 90%;
+        width: 100%;
+        padding: 4rem;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 24px;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.05);
+        transform: translateY(0);
+        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+        box-shadow: 0 0 40px rgba(var(--primary), 0.1);
+    }
+
+    .hero-text:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 10px 50px rgba(var(--primary), 0.2);
+        border-color: rgba(var(--primary-light), 0.2);
+    }
+
+    .logo {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        margin-bottom: 3rem;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards;
+    }
+
+    .logo-text {
+        font-size: 2.5rem;
+        font-weight: 800;
+        color: white;
+        letter-spacing: 2px;
+    }
+
+    .logo-accent {
+        font-size: 2.5rem;
+        font-weight: 800;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        letter-spacing: 2px;
+    }
+
+    .title-container {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards 0.2s;
+    }
+
+    .title-line {
+        font-size: 4rem;
+        line-height: 1.1;
+        color: white;
+        font-weight: 800;
+        text-shadow: 0 0 20px rgba(var(--primary-light), 0.3);
+    }
+
+    .gradient-text {
+        font-size: 4rem;
+        line-height: 1.1;
+        background: var(--gradient);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-size: 200%;
+        animation: gradientFlow 8s linear infinite;
+    }
+
+    .subtitle {
+        color: #94a3b8;
+        font-size: 1.25rem;
+        margin: 2rem 0;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards 0.4s;
+    }
+
+    .highlight {
+        color: white;
+        font-weight: 600;
+    }
+
+    .price-container {
+        margin: 2rem 0;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards 0.6s;
+    }
+
+    .price-tag {
+        display: inline-flex;
+        flex-direction: column;
+        background: rgba(var(--primary-light), 0.1);
+        padding: 1rem 2rem;
+        border-radius: 20px;
+        border: 1px solid rgba(var(--primary-light), 0.2);
+    }
+
+    .price-label {
+        font-size: 0.9rem;
+        color: #94a3b8;
+        margin-bottom: 0.25rem;
+    }
+
+    .price-amount {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+    }
+
+    .cta-buttons {
+        display: flex;
+        gap: 1.5rem;
+        justify-content: center;
+        opacity: 0;
+        animation: fadeInUp 0.6s ease forwards 0.8s;
+    }
+
+    .primary-button,
+    .secondary-button {
+        position: relative;
+        padding: 1rem 2rem;
+        border-radius: 12px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: all 0.3s ease;
+        overflow: hidden;
+    }
+
+    .primary-button {
+        background: var(--gradient);
+        color: white;
+        background-size: 200%;
+        background-position: 0%;
+    }
+
+    .button-shine {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.3),
+            transparent
+        );
+        transition: left 0.6s ease;
+    }
+
+    .primary-button:hover .button-shine {
+        left: 100%;
+    }
+
+    .primary-button:hover {
+        transform: translateY(-2px);
+        background-position: 100%;
+    }
+
+    .secondary-button {
+        background: rgba(255, 255, 255, 0.1);
+        color: white;
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .secondary-button:hover {
+        background: rgba(255, 255, 255, 0.15);
+        transform: translateY(-2px);
+        border-color: rgba(var(--primary-light), 0.3);
+    }
+
+    @keyframes fadeInUp {
+        from {
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    }
+
+    @keyframes gradientFlow {
+        0% {
+            background-position: 0% 50%;
+        }
+        50% {
+            background-position: 100% 50%;
+        }
+        100% {
+            background-position: 0% 50%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .hero-text {
+            padding: 2rem;
+        }
+
+        .logo-text,
+        .logo-accent {
+            font-size: 2rem;
+        }
+
+        .title-line,
+        .gradient-text {
+            font-size: 2.5rem;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+        }
+
+        .cta-buttons {
+            flex-direction: column;
+        }
+
+        .primary-button,
+        .secondary-button {
+            width: 100%;
+            text-align: center;
+            padding: 1.25rem;
+        }
+    }
+
+    @media (min-width: 769px) {
+        .logo-text,
+        .logo-accent {
+            font-size: 3rem;
+        }
+
+        .title-line,
+        .gradient-text {
+            font-size: 6rem;
+        }
+
+        .subtitle {
+            font-size: 1.5rem;
+        }
+
+        .primary-button,
+        .secondary-button {
+            font-size: 1.25rem;
+            padding: 1.5rem 3rem;
+        }
+    }
+</style>

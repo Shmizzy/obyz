@@ -1,0 +1,317 @@
+---
+const plans = [
+    {
+        name: "Starter",
+        price: "299",
+        duration: "One-time",
+        description: "Perfect for small businesses just getting started",
+        features: [
+            "3-page responsive website",
+            "Basic SEO setup",
+            "Contact form",
+            "Mobile-friendly design",
+            "2 rounds of revisions",
+            "5-day delivery"
+        ],
+        isPopular: false,
+        ctaText: "Get Started"
+    },
+    {
+        name: "Professional",
+        price: "500",
+        duration: "One-time",
+        description: "Our most popular package for growing businesses",
+        features: [
+            "5-page professional website",
+            "Advanced SEO optimization",
+            "Custom contact forms",
+            "Responsive design",
+            "Social media integration",
+            "Analytics setup",
+            "Speed optimization",
+            "3 rounds of revisions",
+            "10-day delivery",
+            "30 days of support"
+        ],
+        isPopular: true,
+        ctaText: "Get Started"
+    },
+    {
+        name: "Enterprise",
+        price: "Custom",
+        duration: "Project-based",
+        description: "Tailored solutions for larger organizations",
+        features: [
+            "Custom website development",
+            "Advanced functionality",
+            "E-commerce integration",
+            "Custom API development",
+            "Database integration",
+            "Premium hosting setup",
+            "Advanced security features",
+            "Unlimited revisions",
+            "Priority support",
+            "90 days of support"
+        ],
+        isPopular: false,
+        ctaText: "Contact Us"
+    }
+];
+---
+
+<section id="pricing" class="pricing">
+    <div class="container">
+        <h2>Simple, Transparent <span class="gradient-text">Pricing</span></h2>
+        <p class="pricing-subtitle">Choose the perfect plan for your business needs</p>
+        
+        <div class="pricing-grid">
+            {
+                plans.map((plan) => (
+                    <div class={`pricing-card ${plan.isPopular ? 'popular' : ''}`}>
+                        {plan.isPopular && <div class="popular-badge">Most Popular</div>}
+                        <div class="plan-header">
+                            <h3>{plan.name}</h3>
+                            <div class="price">
+                                {plan.price === "Custom" ? (
+                                    <span class="amount">Custom</span>
+                                ) : (
+                                    <>
+                                        <span class="currency">$</span>
+                                        <span class="amount">{plan.price}</span>
+                                    </>
+                                )}
+                                <span class="duration">/{plan.duration}</span>
+                            </div>
+                            <p class="description">{plan.description}</p>
+                        </div>
+                        <ul class="features-list">
+                            {plan.features.map((feature) => (
+                                <li>
+                                    <svg class="check-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                        <path d="M20 6L9 17L4 12" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                    {feature}
+                                </li>
+                            ))}
+                        </ul>
+                        <a href="#contact" class="cta-button">
+                            {plan.ctaText}
+                            <svg class="arrow-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                                <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </a>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .pricing {
+        padding: 8rem 2rem;
+        background: linear-gradient(to bottom, rgba(13, 12, 17, 0.95), rgba(13, 12, 17, 0.8));
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+
+    .pricing-subtitle {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 1.25rem;
+        margin-bottom: 4rem;
+        opacity: 0.8;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #a855f7 0%, #ff6b6b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .pricing-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 2rem;
+        align-items: start;
+    }
+
+    .pricing-card {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 16px;
+        padding: 2rem;
+        position: relative;
+        transition: all 0.3s ease;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .pricing-card.popular {
+        background: rgba(168, 85, 247, 0.05);
+        border-color: rgba(168, 85, 247, 0.2);
+        transform: scale(1.05);
+    }
+
+    .pricing-card:hover {
+        border-color: rgba(168, 85, 247, 0.3);
+        box-shadow: 0 4px 20px rgba(168, 85, 247, 0.15);
+    }
+
+    .popular-badge {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background: linear-gradient(135deg, #a855f7 0%, #ff6b6b 100%);
+        padding: 0.5rem 1rem;
+        border-radius: 20px;
+        color: white;
+        font-size: 0.875rem;
+        font-weight: 500;
+    }
+
+    .plan-header {
+        text-align: center;
+        margin-bottom: 2rem;
+        padding-bottom: 2rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    h3 {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+    }
+
+    .price {
+        font-size: 2.5rem;
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: baseline;
+        justify-content: center;
+        gap: 0.25rem;
+    }
+
+    .currency {
+        font-size: 1.5rem;
+        font-weight: 500;
+        color: #a855f7;
+    }
+
+    .duration {
+        font-size: 1rem;
+        color: #94a3b8;
+        font-weight: normal;
+    }
+
+    .description {
+        color: #94a3b8;
+        font-size: 1rem;
+        line-height: 1.6;
+    }
+
+    .features-list {
+        list-style: none;
+        padding: 0;
+        margin: 0 0 2rem 0;
+    }
+
+    .features-list li {
+        color: #e2e8f0;
+        font-size: 1rem;
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+    }
+
+    .check-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        color: #a855f7;
+        flex-shrink: 0;
+    }
+
+    .cta-button {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        background: linear-gradient(135deg, #a855f7 0%, #ff6b6b 100%);
+        color: white;
+        padding: 1rem 2rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.2s ease;
+        width: 100%;
+    }
+
+    .cta-button:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+    }
+
+    .arrow-icon {
+        width: 1.25rem;
+        height: 1.25rem;
+        transition: transform 0.2s ease;
+    }
+
+    .cta-button:hover .arrow-icon {
+        transform: translateX(4px);
+    }
+
+    /* Add subtle animated gradient background */
+    .pricing::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 20% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 80% 80%, rgba(255, 107, 107, 0.15) 0%, transparent 40%);
+        opacity: 0.5;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+        .pricing {
+            padding: 6rem 1rem;
+        }
+
+        .pricing-grid {
+            gap: 2rem;
+        }
+
+        .pricing-card.popular {
+            transform: scale(1);
+        }
+
+        .pricing-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>

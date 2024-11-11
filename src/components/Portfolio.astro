@@ -1,0 +1,260 @@
+---
+const portfolioItems = [
+    {
+        title: "E-Commerce Platform",
+        category: "Web Development",
+        image: "https://picsum.photos/600/400?random=1",
+        description: "A modern e-commerce solution with seamless checkout experience",
+        link: "#"
+    },
+    {
+        title: "Mobile Banking App",
+        category: "UI/UX Design",
+        image: "https://picsum.photos/600/400?random=2",
+        description: "Intuitive mobile banking interface with advanced security features",
+        link: "#"
+    },
+    {
+        title: "Real Estate Website",
+        category: "Web Development",
+        image: "https://picsum.photos/600/400?random=3",
+        description: "Property listing platform with virtual tour capabilities",
+        link: "#"
+    },
+    {
+        title: "Fitness Tracking App",
+        category: "Mobile Development",
+        image: "https://picsum.photos/600/400?random=4",
+        description: "Comprehensive fitness tracking with AI-powered recommendations",
+        link: "#"
+    },
+    {
+        title: "Restaurant Booking System",
+        category: "Full Stack",
+        image: "https://picsum.photos/600/400?random=5",
+        description: "Smart reservation system with real-time availability",
+        link: "#"
+    },
+    {
+        title: "Social Media Dashboard",
+        category: "Analytics",
+        image: "https://picsum.photos/600/400?random=6",
+        description: "Unified social media management and analytics platform",
+        link: "#"
+    }
+];
+---
+
+<section id="portfolio" class="portfolio">
+    <div class="container">
+        <h2>Our Latest <span class="gradient-text">Projects</span></h2>
+        <p class="portfolio-subtitle">Transforming ideas into exceptional digital experiences</p>
+        
+        <div class="portfolio-grid">
+            {
+                portfolioItems.map((item) => (
+                    <a href={item.link} class="portfolio-card">
+                        <div class="portfolio-image">
+                            <img src={item.image} alt={item.title} loading="lazy" />
+                            <div class="portfolio-overlay">
+                                <span class="view-project">View Project</span>
+                            </div>
+                        </div>
+                        <div class="portfolio-content">
+                            <span class="category">{item.category}</span>
+                            <h3>{item.title}</h3>
+                            <p>{item.description}</p>
+                        </div>
+                        <div class="card-shine"></div>
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    .portfolio {
+        padding: 8rem 2rem;
+        background: linear-gradient(to bottom, rgba(13, 12, 17, 0.95), rgba(13, 12, 17, 0.8));
+        position: relative;
+        overflow: hidden;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        position: relative;
+        z-index: 2;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: clamp(2.5rem, 5vw, 3.5rem);
+        font-weight: 700;
+        color: white;
+        margin-bottom: 1rem;
+        line-height: 1.1;
+    }
+
+    .portfolio-subtitle {
+        text-align: center;
+        color: #94a3b8;
+        font-size: 1.25rem;
+        margin-bottom: 4rem;
+        opacity: 0.8;
+    }
+
+    .gradient-text {
+        background: linear-gradient(135deg, #a855f7 0%, #ff6b6b 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+    }
+
+    .portfolio-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 2rem;
+    }
+
+    .portfolio-card {
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: 16px;
+        overflow: hidden;
+        position: relative;
+        transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        text-decoration: none;
+        border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .portfolio-card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(168, 85, 247, 0.3);
+        box-shadow: 0 10px 30px rgba(168, 85, 247, 0.1);
+    }
+
+    .portfolio-image {
+        position: relative;
+        aspect-ratio: 16/9;
+        overflow: hidden;
+    }
+
+    .portfolio-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .portfolio-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(168, 85, 247, 0.9);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: opacity 0.4s ease;
+    }
+
+    .view-project {
+        color: white;
+        font-weight: 600;
+        font-size: 1.1rem;
+        transform: translateY(20px);
+        transition: transform 0.4s ease;
+    }
+
+    .portfolio-card:hover .portfolio-overlay {
+        opacity: 1;
+    }
+
+    .portfolio-card:hover .view-project {
+        transform: translateY(0);
+    }
+
+    .portfolio-card:hover img {
+        transform: scale(1.1);
+    }
+
+    .portfolio-content {
+        padding: 1.5rem;
+    }
+
+    .category {
+        color: #a855f7;
+        font-size: 0.9rem;
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+    }
+
+    h3 {
+        color: white;
+        font-size: 1.5rem;
+        font-weight: 600;
+        margin: 0.5rem 0;
+    }
+
+    p {
+        color: #94a3b8;
+        font-size: 1rem;
+        line-height: 1.6;
+        margin: 0;
+    }
+
+    .card-shine {
+        position: absolute;
+        top: 0;
+        left: -100%;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.1),
+            transparent
+        );
+        transition: left 0.8s ease;
+    }
+
+    .portfolio-card:hover .card-shine {
+        left: 100%;
+    }
+
+    /* Add subtle animated gradient background */
+    .portfolio::after {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: 
+            radial-gradient(circle at 80% 20%, rgba(168, 85, 247, 0.15) 0%, transparent 40%),
+            radial-gradient(circle at 20% 80%, rgba(255, 107, 107, 0.15) 0%, transparent 40%);
+        opacity: 0.5;
+        z-index: 1;
+        pointer-events: none;
+    }
+
+    @media (max-width: 768px) {
+        .portfolio {
+            padding: 6rem 1rem;
+        }
+
+        .portfolio-grid {
+            grid-template-columns: 1fr;
+            gap: 1.5rem;
+        }
+
+        .portfolio-subtitle {
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+    }
+</style>
